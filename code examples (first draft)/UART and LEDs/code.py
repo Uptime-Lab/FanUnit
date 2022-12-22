@@ -6,9 +6,9 @@ import digitalio
 import neopixel
 
 g,r,b = 0,0,0
-mintemp = 20 #Temperature Boundaries. Closer to this is green
-maxtemp = 35 #Temperature Boundaries. Closer to this is red
-LEDbrightness = 0.2 #Yes, you can change the brightness here
+mintemp = 20 #Temperature Boundaries. Closer to this is green. LEDs
+maxtemp = 35 #Temperature Boundaries. Closer to this is red. LEDs
+LEDbrightness = 0.6 #Yes, you can change the brightness here
 
 led = digitalio.DigitalInOut(board.LED)
 led.direction = digitalio.Direction.OUTPUT
@@ -47,7 +47,7 @@ while True:
     else:
         pixels[0] = (0, 255, 0)
      
-    temp = emc.internal_temperature
+    temp = emc.internal_temperature + 2
     if mintemp <= temp <= maxtemp:
         temp = temp - mintemp
         mtemp = maxtemp - mintemp
@@ -151,14 +151,14 @@ while True:
             print("Fan speed", emc.fan_speed, "RPM")
             time.sleep(1)
         elif 29 <= emc.external_temperature < 31 or 29 <= emc.internal_temperature < 31:
-            led.value = True
+           #led.value = True
             print("Setting fan speed to 30%")
             emc.manual_fan_speed = 30
             time.sleep(2)
             print("Fan speed", emc.fan_speed, "RPM")
             time.sleep(1)
         else:
-            led.value = True
+            #led.value = True
             print("Setting fan speed to 10%")
             emc.manual_fan_speed = 10
             time.sleep(2)
