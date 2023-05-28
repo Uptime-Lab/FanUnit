@@ -13,7 +13,7 @@
 
 ## About The Project
 
-![Fan Unit v0.6](images/Fan_Unit_v0.6.png)
+![Fan Unit v0.6](images/Fan_Unit_v0.6.jpg)
 
 There were many iterations.There are two versions left in the final:
 * Smart Fan Unit, based on RP2040 and EMC2101
